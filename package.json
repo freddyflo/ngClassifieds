@@ -1,0 +1,29 @@
+{
+  "name": "ngclassifieds",
+  "version": "1.0.0",
+  "description": "Application Listing Project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "angular",
+    "html",
+    "css",
+    "npm",
+    "js"
+  ],
+  "author": "fred aklamanu <fred.aklamanu@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "angular": "^1.6.4",
+    "angular-material": "^1.1.4",
+    "mdi": "^1.9.33"
+  },
+  "devDependencies": {
+    "angular-animate": "^1.6.4",
+    "angular-aria": "^1.6.4",
+    "angular-material": "^1.1.4",
+    "mdi": "^1.9.33"
+  }
+}
