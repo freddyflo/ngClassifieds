@@ -19,8 +19,34 @@
             <md-icon class="mdi mdi-plus-circle"></md-icon>
             New Classified
         </md-button>
+        
+         <md-button ng-click="showFilters = true">
+            <md-icon class="mdi mdi-magnify"></md-icon>
+            Filters
+        </md-button>
+        
     </div>
 </md-toolbar>
+    
+<div class="filters" layout="row" layout-align="center center" ng-show="showFilters">
+    
+    <md-input-container>
+        <label>Enter Search Term</label>
+        <input type="text" ng-model="classifiedsFilter">
+    </md-input-container>
+        
+    <md-input-container>
+        <label>Category</label>
+    <md-select ng-model="category">
+        <md-option ng-repeat="category in categories" value= "{{category}}"> {{category}}</md-option>
+    </md-select>
+    </md-input-container>
+        
+    <md-input-container>
+            <md-button class="md-warn" ng-click="classifiedsFilter = ''; category =''">Clear</md-button>
+    </md-input-container>
+    
+</div>
 
     <!-- Sidebar Navigation -->
     <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left">
@@ -59,7 +85,7 @@
 
     
 <md-content class="md-padding" layout="row" layout-wrap>
-    <md-card ng-repeat="classified in classifieds" flex="30">
+    <md-card ng-repeat="classified in classifieds | filter: classifiedsFilter | filter: category" flex="30" class="classified">
         <img ng-src={{classified.image}} alt="angular logo">
         <md-card-content>
             <div class="classified-info" ng-show="!showContact">
@@ -84,7 +110,7 @@
             <h3>Admin</h3>
                 <div layout="row">
                     <md-button ng-click="editClassified(classified)" class="md-primary">Edit</md-button>
-                    <md-button class="md-primary">Delete</md-button>
+                    <md-button ng-click="deleteClassified($event, classified)" class="md-primary">Delete</md-button>
                 </div>
             </div>
             
@@ -99,5 +125,6 @@
 <script src="script/app.js"></script>
 <script src="components/classifieds.ctr.js"></script>
 <script src="components/classifieds.fac.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
 </body>
 </html>
